@@ -66,8 +66,7 @@
     "karma-jasmine-html-reporter": "^1.5.4",
     "popper.js": "^1.16.1",
     "protractor": "^7.0.0",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.5",
-    "open": "^7.0.3"
+    "ts-node": "^9.0.0",
+    "typescript": "^3.9.5"
   }
 }

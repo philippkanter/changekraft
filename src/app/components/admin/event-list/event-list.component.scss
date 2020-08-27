@@ -13,3 +13,23 @@
 .mat-action-row a.mat-button-base {
   margin-left: 8px;
 }
+
+.bar-spacer {
+  flex: 1 1 auto;
+}
+
+.nav-item {
+  line-height: 2em;
+  width: unset;
+  min-width: 40px;
+  padding: 0 8px;
+  .nav-item-title {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.5em;
+      &::before {
+        content: attr(data-text);
+      }
+  }
+}
