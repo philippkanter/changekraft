@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import {
   AngularFirestore,
@@ -6,7 +6,7 @@ import {
 } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Event } from '../../../shared/event.model';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogDeleteComponent } from '../zusagen/dialog-delete.component';
 import { DialogShareComponent } from './dialog-share.component';
@@ -17,12 +17,14 @@ import { DialogShareComponent } from './dialog-share.component';
   styleUrls: ['./event-list.component.scss']
 })
 
-export class EventListComponent implements OnInit {
+export class EventListComponent implements OnInit, OnDestroy {
 
   event$: Observable<any>;
   shareVar: any;
   counter: number;
   userId: string;
+  subscription: Subscription;
+  eventData: Array<any>;
 
   private eventCollection: AngularFirestoreCollection;
 
@@ -33,6 +35,20 @@ export class EventListComponent implements OnInit {
 
   ngOnInit() {
     this.getEventData();
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  async fetchDataforExcel() {
+    this.subscription = this.event$.subscribe(rsvp => {
+      this.eventData = rsvp;
+      for (let x = 0; x < this.eventData.length; x++) {
+        this.counter = 1 + x;
+        console.log(this.counter);
+      }
+    });
   }
 
   async getEventData(){
@@ -47,6 +63,7 @@ export class EventListComponent implements OnInit {
         })
       )
     );
+    this.fetchDataforExcel();
   }
 
   share(title: string, text: string, url: string) {
@@ -74,7 +91,7 @@ export class EventListComponent implements OnInit {
 
   deleteDialog(id: string, name: string) {
     const dialogRef = this.dialog.open(DialogDeleteComponent, {
-      width: '250px',
+      // width: '250px',
       data: { id: id, name: name }
     });
 
@@ -90,7 +107,7 @@ export class EventListComponent implements OnInit {
   }
   shareDialog(title: string, text: string, url: string) {
     this.dialog.open(DialogShareComponent, {
-      width: '250px',
+      // width: '250px',
       data: { title: title, text: text, url: url }
     });
   }

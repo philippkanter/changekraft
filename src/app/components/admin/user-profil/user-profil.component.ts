@@ -57,7 +57,7 @@ export class UserProfilComponent implements OnInit {
     const name = this.userService.name;
     const user = this.authservice.getCurrentUser();
     const dialogRef = this.dialog.open(DialogUserDeleteComponent, {
-      width: '250px',
+      // width: '250px',
       data: { id: id, name: name, user: user }
     });
 

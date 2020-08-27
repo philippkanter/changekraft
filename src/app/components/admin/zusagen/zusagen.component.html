@@ -54,34 +54,47 @@
                 </li>
               </ul>
               <mat-action-row>
-                <button
-                  mat-icon-button
-                  *ngIf="!editMode"
-                  (click)="editMode = !editMode"
-                  title="Teilnehmer bearbeiten">
-                  <mat-icon svgIcon="edit"></mat-icon>
-                </button>
-                <button
-                  mat-icon-button
-                  *ngIf="editMode"
-                  (click)="editMode = !editMode; updateItem(participant.id, begleitung.checked)"
-                  title="Teilnehmer speichern">
-                  <mat-icon svgIcon="save"></mat-icon>
-                </button>
+                <ng-template [ngIf]="!editMode">
+                  <button
+                    mat-button
+                    class="nav-item"
+                    (click)="editMode = !editMode"
+                    title="Teilnehmer bearbeiten">
+                    <mat-icon svgIcon="edit"></mat-icon>
+                    <span class="nav-item-title">Bearbeiten</span>
+                  </button>
+                  <span class="bar-spacer"></span>
+                </ng-template>
+                <ng-template [ngIf]="editMode">
+                  <button
+                    mat-button
+                    class="nav-item"
+                    (click)="editMode = !editMode; updateItem(participant.id, begleitung.checked)"
+                    title="Teilnehmer speichern">
+                    <mat-icon svgIcon="save"></mat-icon>
+                    <span class="nav-item-title">Speichern</span>
+                  </button>
+                  <span class="bar-spacer"></span>
+                </ng-template>
                 <a
                   *ngIf="participant?.email"
-                  mat-icon-button
+                  mat-button
+                  class="nav-item"
                   href="mailto:{{participant?.email}}"
                   target="_blank"
                   title="E-Mail schreiben">
                   <mat-icon svgIcon="email"></mat-icon>
+                  <span class="nav-item-title">E-Mail</span>
                 </a>
+                <span class="bar-spacer"></span>
                 <button
-                  mat-icon-button
+                  mat-button
+                  class="nav-item"
                   color="warn"
                   (click)="openDialog(participant.id, participant.name)"
                   title="Teilnehmer entfernen">
                   <mat-icon svgIcon="delete"></mat-icon>
+                  <span class="nav-item-title">Löschen</span>
                 </button>
               </mat-action-row>
           </mat-expansion-panel>

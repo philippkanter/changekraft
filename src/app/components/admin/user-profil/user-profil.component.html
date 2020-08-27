@@ -1,6 +1,6 @@
 <div class="container pb-3">
   <div class="row">
-    <div class="col-12 mt-3">
+    <div class="col-md-4 mt-3">
       <mat-card>
         <mat-card-header>
           <div class="justify-content-center align-self-center" mat-card-avatar>
@@ -47,14 +47,16 @@
           <button
             mat-button
             type="button"
-            title="Speichern">E-Mail ändern
+            title="Speichern"
+            disabled>E-Mail ändern
           </button>
           <button
             mat-button
             type="button"
-            title="Speichern">Passwort ändern
+            title="Speichern"
+            disabled>Passwort ändern
           </button>
-          <span style="flex: 1 1 auto;"></span>
+          <span class="bar-spacer"></span>
           <button
             mat-icon-button
             (click)="deleteDialog()"
@@ -62,6 +64,38 @@
             type="button"
             title="Benutzer löschen">
             <mat-icon aria-label="Benutzer löschen" svgIcon="delete"></mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div class="col-md-4 mt-3">
+      <mat-card>
+        <mat-card-header>
+          <div class="justify-content-center align-self-center" mat-card-avatar>
+            <mat-icon
+              svgIcon="account_circle"
+              class="header-icon"></mat-icon>
+          </div>
+          <mat-card-title>
+            Dashboard
+          </mat-card-title>
+          <mat-card-subtitle class="mb-0">Alles auf einen Blick</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="mt-3">
+          Events
+        </mat-card-content>
+        <mat-card-actions class="flex-card-actions">
+          <button
+            mat-button
+            type="button"
+            title="Speichern"
+            disabled>Work in
+          </button>
+          <button
+            mat-button
+            type="button"
+            title="Speichern"
+            disabled>progress
           </button>
         </mat-card-actions>
       </mat-card>
