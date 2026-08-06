@@ -1,5 +1,7 @@
 # WwRsvp
 
+> **Hinweis:** Dieses Repository war ein Übungsprojekt, um Angular zu lernen. Es wird seit Q3/2024 nicht mehr weiterentwickelt und die Anwendung ist nicht mehr online verfügbar.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
 
 ## ToDo
